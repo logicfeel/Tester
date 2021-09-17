@@ -61,6 +61,7 @@
                 // view
                 _temp_list:     { selector: { key: '#s-temp-list'+ _SUFF,       type: 'html' } },
                 _area_list:     { selector: { key: '#s-area-list'+ _SUFF,       type: 'html' } },
+                _vue:           { selector: { key: '#app'+_SUFF,                type: 'none' } },
                 _area_page:     { selector: { key: '#s-area-page'+ _SUFF,       type: 'html' } },
                 _txt_sumCnt:    { selector: { key: '#s-txt-sumCnt'+ _SUFF,      type: 'html' } },
                 // bind

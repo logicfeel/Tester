@@ -53,45 +53,12 @@
 </div>
 
 <!-- ********************** Vue 템플릿 *************************** -->
-<div id="_app">
-  <list-vue message="ssss"></list-vue>
-</div>
-
-<template id="com">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Num</th>
-        <th>제목</th>
-        <th>Data</th>
-        <th>작성자</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="row in rows">
-        <td>
-            {{row.row_count}}
-        </td>
-        <td class="board_tit">
-          <a href="#">
-              {{row.title}}
-          </a>
-        </td>
-        <td> {{row.create_dt}}</td>
-        <td> {{row.writer}} </td>
-        <!--<td> 765 </td>-->
-      </tr>
-    </tbody>
-  </table>
-</template>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
-  Vue.component('list-vue', {
-    // template: '<p>LIST-VUE</p>'
-    template: '#com',
-    props: ['rows']
-  });
+  import GlobalComponent from './global.vue'
+  Vue.component('list-vue', GlobalComponent);
+
 </script>
 <!-- //********************** Vue 템플릿 *************************** -->
 
