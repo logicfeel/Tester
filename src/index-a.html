@@ -47,21 +47,27 @@
 
   <!-- Vue 템플릿으로 바인딩 -->
   <div id="app">
-      <list-vue v-bind:rows="rows" ></list-vue>
+      <p>{{message}}</p>
+      <input type="text" v-model="message">
+      <li v-for="row in rows">
+        <dd class="board_tit">
+          <a href="#">
+            <input type="text" v-model="row.title">
+          </a>
+        </dd>
+      </li>
+      <list-vue v-bind:rows="rows" v-bind:msg="message"></list-vue>
   </div>
 
 </div>
 
 <!-- ********************** Vue 템플릿 *************************** -->
-<div id="_app">
-  <list-vue message="ssss"></list-vue>
-</div>
 
 <template id="com">
   <table class="table">
     <thead>
       <tr>
-        <th>Num</th>
+        <th>{{msg}}</th>
         <th>제목</th>
         <th>Data</th>
         <th>작성자</th>
@@ -74,7 +80,7 @@
         </td>
         <td class="board_tit">
           <a href="#">
-              {{row.title}}
+            {{row.title}}
           </a>
         </td>
         <td> {{row.create_dt}}</td>
@@ -90,7 +96,7 @@
   Vue.component('list-vue', {
     // template: '<p>LIST-VUE</p>'
     template: '#com',
-    props: ['rows']
+    props: ['rows', 'msg']
   });
 </script>
 <!-- //********************** Vue 템플릿 *************************** -->
@@ -116,18 +122,6 @@
     ntc.prop['__isGetLoad'] = false;
     ntc.app = {};
 
-    // 콜백
-    // ntc.onExecuted = function(cmd, entity){
-    //   // app.rows = b.table.rows;
-    //   ntc.app = new Vue({
-    //     el: '#app',
-    //     data: {
-    //       message: 'Hello Vue!..',
-    //       rows: entity.table.rows
-    //     }
-    //   });
-    // };
-
     ntc.list.cbOutput = function(p_result) {
       var entity = p_result['table'];
       var row_total   = entity['row_total'];
@@ -135,7 +129,8 @@
       ntc.app = new Vue({
         el: '#app',
         data: {
-          rows: entity.rows
+          rows: entity.rows,
+          message: '메세지...',
         }
       });
       ntc.items['_txt_sumCnt'].value      = row_total;

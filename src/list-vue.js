@@ -30,9 +30,9 @@
             <thead>
             <tr>
                 <th>Num</th>
-                <th>제목</th>
+                <th>Title</th>
                 <th>Data</th>
-                <th>작성자</th>
+                <th>Writer</th>
             </tr>
             </thead>
             <tbody>
