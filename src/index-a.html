@@ -133,6 +133,13 @@
           message: '메세지...',
         }
       });
+      ntc.items['title'].setter = function(val) { 
+        ntc.app.message = val
+      };
+      ntc.items['title'].getter = function() { 
+        return ntc.app.message
+      };
+
       ntc.items['_txt_sumCnt'].value      = row_total;
       ntc.items['_area_page'].value       = page.parser(row_total); 
     };
