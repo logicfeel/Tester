@@ -30,6 +30,7 @@
     </v-toolbar>
     <v-content>
       <router-view/>
+      <div>컨텐츠 영역</div>
     </v-content>
     <v-footer color="indigo" app>
       <span class="white--text">&copy; 2017</span>

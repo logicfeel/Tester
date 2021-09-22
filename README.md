@@ -1,5 +1,12 @@
 # vuex-project
 
+## vue-cli 3.x setup
+```
+[맥은 : sudo -s] 
+
+npm install @vue/cli -g
+```
+
 ## Project setup
 ```
 npm install
