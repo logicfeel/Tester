@@ -11,10 +11,32 @@ export default new Vuex.Store({
       {userId: 'lego123', password: '789', name: 'Lego', address: 'Busan', src:'https://goo.gl/x7SpCD'}
     ]
   },
+  getters: {
+    allUserCount: function(state) {
+      return state.allUsers.length;
+    },
+    countOfSeoul: state => {
+      var count = 0;
+      state.allUsers.forEach(user => {
+        if (user.address === 'Seoul') count++;
+      })
+      return count;
+    },
+    percentOfSeoul: (state, getters) => {
+      return Math.round(getters.countOfSeoul / getters.allUserCount * 100)
+    }
+  },
   mutations: {
-
+    addUsers: (state, payload) => {
+      state.allUsers.push(payload);
+    }
   },
   actions: {
-
+    // addUsers: (context) => {
+    //   context.commit('addUsers');
+    // },
+    addUsers: ({ commit }, payload) => {  // function({commit}, payload) 같은의미
+      commit('addUsers', payload);
+    },
   }
 })

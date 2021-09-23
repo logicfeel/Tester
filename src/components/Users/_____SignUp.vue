@@ -29,8 +29,6 @@
 <script>
 import { EventBus } from '@/main.js'
 // import { mapMutations } from 'vuex'
-import { mapActions } from 'vuex'
-
 
 
 export default {
@@ -45,7 +43,6 @@ export default {
     },
     methods: {
       // ...mapMutations(['addUsers']),
-      ...mapActions(['addUsers']),
       signUp() {
         let userObj = {
           userId: this.userId,
@@ -55,9 +52,9 @@ export default {
           src: this.src
         }
         // EventBus.$emit('signUp', userObj)
-        this.addUsers(userObj);
+        // this.addUsers(userObj);
         // this.$store.commit('addUsers', userObj);
-        // this.$store.dispatch('addUsers', userObj);
+        this.$store.dispatch('addUsers', userObj);
         this.clearForm();
       },
       clearForm() {
