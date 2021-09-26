@@ -54,6 +54,8 @@ export default {
           address: this.address,
           src: this.src
         }
+        this.$store.state.table.items['src'].value = this.src;
+        
         // EventBus.$emit('signUp', userObj)
         this.addUsers(userObj);
         // this.$store.commit('addUsers', userObj);
