@@ -82,6 +82,10 @@
                 writer:         { selector: { key: '#m-writer'+ _SUFF,          type: 'text' } },
                 contents:       { selector: { key: '#m-contents'+ _SUFF,        type: 'html' } },
                 create_dt:      { selector: { key: '#m-create_dt'+ _SUFF,       type: 'text' } },
+                // src:            { 
+                //     selector: { key: 'list-vue',       type: 'attr.v-bind:src' },
+                //     default: "DEF",
+                // },
             };
 
             /**
