@@ -52,6 +52,7 @@ table.rows.add(row);
 // })
 
 console.log(1)
+if (typeof _W === 'object') _W.table = table;
 
 
 Vue.use(Vuex)
