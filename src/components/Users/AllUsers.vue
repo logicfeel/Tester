@@ -70,7 +70,24 @@
     <h1>5.items.src.value, rows[0].src 값 확인</h1>
     <h1>items.value : {{$store.state.table.items['src'].value}}</h1>
     <h2>rows : {{$store.state.table.rows[0]['src']}}</h2>
-    {{in_all.count}}
+    <h3>{{in_all.count}}</h3>
+    <h3>{{src}}</h3>
+
+    <h1>6. 태그를 통한 alls 전달</h1>
+    <v-list two-line>
+      <v-list-tile 
+        v-for="(user, index) in alls"
+        :key="index"
+      >
+      {{user.name}}..
+      <v-text-field
+      label="이미지"
+      v-model="user.src"
+    ></v-text-field>
+      </v-list-tile>
+    </v-list>
+
+
   </div>
 </template>
 
@@ -80,10 +97,12 @@ import { mapGetters, mapState } from 'vuex'
 // import { store } from '@/store.js'
 
   export default {
+    props: ['src', 'alls'],
     data() {
       return {
         // 내부에 선언 사용하는 경우
-        in_all: this.$store.state.all
+        in_all: this.$store.state.all,
+        // src: "초기값"
       }
     },
     computed: {

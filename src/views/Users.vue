@@ -2,7 +2,7 @@
   <v-container grid-list-xl>
     <v-layout row wrap>
       <v-flex xs6>
-        <AllUsers></AllUsers>
+        <AllUsers v-bind:src="$store.state.obj.aaa" :alls="$store.state.all"></AllUsers>
       </v-flex>
       <v-flex xs6>
         <SignUp></SignUp>
