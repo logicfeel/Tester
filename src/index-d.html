@@ -128,18 +128,34 @@
       
       ntc.app = new Vue({
         el: '#app',
-        data: {
-          rows: entity.rows,
-          message: ntc.items['title'].value,
-          // message: '메세지...',
+        // data: {
+        //   rows: entity.rows,
+        //   message: ntc.items['title'].value,
+        //   // message: '메세지...',
+        // }
+        data() {
+          return {
+            rows: entity.rows,
+            // message: ntc.items['title'].value,
+          }
+        },
+        computed: {
+          message: {
+            get() {
+              return ntc.items['title'].value
+            },
+            set(v) {
+              ntc.items['title'].value = v
+            }
+          }
         }
       });
-      ntc.items['title'].setter = function(val) { 
-        ntc.app.message = val
-      };
-      ntc.items['title'].getter = function() { 
-        return ntc.app.message
-      };
+      // ntc.items['title'].setter = function(val) { 
+      //   ntc.app.message = val
+      // };
+      // ntc.items['title'].getter = function() { 
+      //   return ntc.app.message
+      // };
 
       ntc.items['_txt_sumCnt'].value      = row_total;
       ntc.items['_area_page'].value       = page.parser(row_total); 
