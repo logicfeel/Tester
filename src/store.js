@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 // import { BindModelAjax } from '../dist/src/bind-model-ajax.js';
 // var BindModelAjax = require('../dist/src/bind-model-ajax');
-
+// import {BoardNoticeService} from './board-notice-svc.js'
 
 // var jQuery = require('../dist/jquery-1.4.1');
 
@@ -14,6 +14,28 @@ import Vuex from 'vuex'
 // import { EntityTable } from '../dist/src/entity-table.js';
 // var EntityTable = require('../dist/src/entity-table.js');
 
+// 작동됨
+// var util                = require('util');
+// var BoardNoticeService  = require('./board-notice-svc.js').default;
+// var BoardNoticeService  = require('./board-notice-svc.js').BoardNoticeService;
+// var BoardNoticeService  = require('./board-notice-svc.js');
+
+import BoardNoticeService  from  './board-notice-svc.js';
+
+var svc = new BoardNoticeService();
+
+var ntc = new _W.BindModelAjax(svc);
+
+// this.isLog = true;  // 디버깅 모드  
+// this.isThrow = true;  // 던지기
+// ntc.baseUrl = "http://jns9778.cafe24.com/" + ntc.baseUrl;
+ntc.baseUrl = "http://jns9778.cafe24.com/" + '/Front/frt_mod/BOD/Board_Notice.C.asp';
+
+ntc.list.ajaxSetup.crossDomain = true;
+ntc.prop['__isGetLoad'] = false;
+
+ntc.init();
+ntc.fn.procList();
 
 
 // var table = new EntityTable('T1');
@@ -29,14 +51,14 @@ table.items.src.value = "SSS";
 var row = table.newRow();
 row['userId'] = 'R100';
 row['password'] = 'R200';
-row['name'] = 'R200';
+row['name'] = 'R200';     // name
 row['address'] = 'R200';
 row['src'] = 'R200';
 table.rows.add(row);
 var row = table.newRow();
 row['userId'] = 'R101';
 row['password'] = 'R202';
-row['name'] = 'R203';
+row['name'] = 'R203';   // name
 row['address'] = 'R204';
 row['src'] = 'R205';
 table.rows.add(row);
@@ -52,7 +74,10 @@ table.rows.add(row);
 // })
 
 console.log(1)
-if (typeof _W === 'object') _W.table = table;
+if (typeof _W === 'object') {
+  _W.table = table;
+  _W.ntc = ntc;
+}
 
 
 Vue.use(Vuex)
@@ -71,7 +96,8 @@ export default new Vuex.Store({
       bbb: 20
     },
     item: table.items,
-    table: table
+    table: table,
+    ntc: ntc
   },
   getters: {
     allUserCount: function(state) {
