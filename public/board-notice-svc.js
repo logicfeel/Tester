@@ -1,35 +1,15 @@
-var exp = {};
-
-(function(__global) {
+(function(global) {
 
     'use strict';
    
     //==============================================================
     // 2. 모듈 가져오기 (node | web)
     var util;
-    var BaseService;
-    var PageView;
-    var Handlebars;
 
     if (typeof module !== 'object') {                   // Web
-
-        util               = global._W.Common.Util;
-        BaseService        = global.BaseService;
-        PageView           = global.PageView;
-        Handlebars         = global.Handlebars;
-
-    // if (typeof module === 'object' && module.exports) {                   // Web
-    // } else if (typeof module.__es === 'object') {     // es6
-        // import util             from  'util';
-        // import BaseService      from './base-page-svc';
-        // import PageView         from './base-page-svc';
-        // import Handlebars       from 'handlebars';
-    } else {     // node
+        util                = global._W.Common.Util;
+    } else if (typeof module.exports === 'object'){     // node
         util                = require('util');
-        BaseService         = require('./base-page-svc').BaseService;
-        PageView            = require('./base-page-svc').PageView;
-        Handlebars          = require('handlebars');
-
     }
 
     //==============================================================
@@ -55,7 +35,7 @@ var exp = {};
          * @param {String} p_suffix 셀렉터 접미사
          */
         function BoardNoticeService(p_suffix) {
-            // _super.call(this);
+            _super.call(this);
             
             var _SUFF       = p_suffix || '';  // 접미사
             var _this       = this;
@@ -205,7 +185,7 @@ var exp = {};
                 },
             };
         }
-        // util.inherits(BoardNoticeService, _super);
+        util.inherits(BoardNoticeService, _super);
     
         /**
          * 전처리 :: 등록 
@@ -240,27 +220,14 @@ var exp = {};
 
     //==============================================================
     // 5. 모듈 내보내기 (node | web)
-    // if (typeof module.exports === 'object') {     
-    
     if (typeof module === 'object' && typeof module.exports === 'object') {     
-        module.exports.BoardNoticeService = BoardNoticeService;
+
     } else {
         global.BoardNoticeService = BoardNoticeService;
         global.page = page;
+        global._W               = global._W || {};
+        global._W.BoardNoticeService = BoardNoticeService;
+        global._W.page = page;
     }
-    
-    // var aa = typeof BoardNoticeService;
-    // console.log(typeof BoardNoticeService)
-    
-    // exp = {BoardNoticeService: BoardNoticeService}
 
-    // module.exports = {};    // 읽기 전용 속성
-    // Object.defineProperty(module.exports, '__esModule', true);
-    // module.exports.BoardNoticeService = BoardNoticeService;
-    module.exports = BoardNoticeService;
-
-// }(typeof module === 'object' && typeof module.exports === 'object' ? global : window));
-}(typeof module !== 'undefined' && module.exports ? global : window));
-
-// 기본 내보내기 
-// export default  exp.BoardNoticeService;
+}(typeof module === 'object' && typeof module.exports === 'object' ? global : window));

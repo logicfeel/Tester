@@ -18,11 +18,18 @@ import Vuex from 'vuex'
 // var util                = require('util');
 // var BoardNoticeService  = require('./board-notice-svc.js').default;
 // var BoardNoticeService  = require('./board-notice-svc.js').BoardNoticeService;
+var test = require('./test.js')
+
 // var BoardNoticeService  = require('./board-notice-svc.js');
 
-import BoardNoticeService  from  './board-notice-svc.js';
+var BoardNoticeService  = _W.BoardNoticeService;
+// var BoardNoticeService  = BoardNoticeService;
 
+// import BoardNoticeService  from  './board-notice-svc.js';
+
+// var svc = new BoardNoticeService();
 var svc = new BoardNoticeService();
+
 
 var ntc = new _W.BindModelAjax(svc);
 
