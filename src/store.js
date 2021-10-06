@@ -20,9 +20,9 @@ import Vuex from 'vuex'
 // var BoardNoticeService  = require('./board-notice-svc.js').BoardNoticeService;
 var test = require('./test.js')
 
-// var BoardNoticeService  = require('./board-notice-svc.js');
+var BoardNoticeService  = require('./board-notice-svc.js').BoardNoticeService;
 
-var BoardNoticeService  = _W.BoardNoticeService;
+// var BoardNoticeService  = _W.BoardNoticeService;
 // var BoardNoticeService  = BoardNoticeService;
 
 // import BoardNoticeService  from  './board-notice-svc.js';
@@ -58,18 +58,24 @@ table.items.src.value = "SSS";
 var row = table.newRow();
 row['userId'] = 'R100';
 row['password'] = 'R200';
-row['name'] = 'R200';     // name
-row['address'] = 'R200';
-row['src'] = 'R200';
+row['name'] = 'R300';     // name
+row['address'] = 'R400';
+row['src'] = 'R500';
 table.rows.add(row);
 var row = table.newRow();
 row['userId'] = 'R101';
-row['password'] = 'R202';
-row['name'] = 'R203';   // name
-row['address'] = 'R204';
-row['src'] = 'R205';
+row['password'] = 'R201';
+row['name'] = 'R301';   // name
+row['address'] = 'R401';
+row['src'] = 'R501';
 table.rows.add(row);
 
+for(var prop in table.rows) {
+  console.log('______________')
+  console.log(prop)
+  console.log(table.rows[prop])
+  console.log('______________')
+}
 
 // var test = require('../dist/test-vue');
 // console.log(typeof BindModelAjax)

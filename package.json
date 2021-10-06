@@ -18,8 +18,8 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
     "expose-loader": "^3.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",

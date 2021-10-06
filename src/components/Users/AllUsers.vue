@@ -35,7 +35,31 @@
     ></v-text-field>
       </v-list-tile>
     </v-list>
-    
+
+    <h1>1-1.rows 로딩방식</h1>
+    <v-list two-line>
+      <v-list-tile 
+        v-for="(user, index) in $store.state.all"
+      :key="index">
+      {{user.name}}..
+      </v-list-tile>
+    </v-list>
+
+    <h1>1-2.rows 로딩방식 (BindModelAjax 에서 가져옴)</h1>
+    <v-list two-line>
+      <v-list-tile 
+        v-for="(user, index) in $store.state.ntc.list.output.rows"
+        :key="index"
+      >
+      {{user.title}}..
+      <v-text-field
+      label="이미지"
+      v-model="user.create_dt"
+    ></v-text-field>
+      </v-list-tile>
+    </v-list>
+
+
     <h1>2.지역정의 row 로딩방식</h1>
     <v-list two-line>
       <v-list-tile 
@@ -49,6 +73,7 @@
     ></v-text-field>
       </v-list-tile>
     </v-list>
+
 
     <h1>3.item.src.value 바인딩 확인</h1>
     <h1>{{$store.state.item['src'].value}}</h1>
@@ -72,7 +97,7 @@
     <h2>rows : {{$store.state.table.rows[0]['src']}}</h2>
     <h3>{{in_all.count}}</h3>
     <h3>{{src}}</h3>
-
+<!--
     <h1>6. 태그를 통한 alls 전달</h1>
     <v-list two-line>
       <v-list-tile 
@@ -87,7 +112,7 @@
       </v-list-tile>
     </v-list>
 
-
+-->    
   </div>
 </template>
 

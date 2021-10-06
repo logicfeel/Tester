@@ -11,25 +11,17 @@ var exp = {};
     var PageView;
     var Handlebars;
 
-    if (typeof module !== 'object') {                   // Web
-
-        util               = global._W.Common.Util;
-        BaseService        = global.BaseService;
-        PageView           = global.PageView;
-        Handlebars         = global.Handlebars;
-
-    // if (typeof module === 'object' && module.exports) {                   // Web
-    // } else if (typeof module.__es === 'object') {     // es6
-        // import util             from  'util';
-        // import BaseService      from './base-page-svc';
-        // import PageView         from './base-page-svc';
-        // import Handlebars       from 'handlebars';
-    } else {     // node
+    
+    if (typeof module !== 'undefined' && module.exports ) {                   // Web
         util                = require('util');
         BaseService         = require('./base-page-svc').BaseService;
         PageView            = require('./base-page-svc').PageView;
         Handlebars          = require('handlebars');
-
+    } else {     // node
+        util               = global._W.Common.Util;
+        BaseService        = global.BaseService;
+        PageView           = global.PageView;
+        Handlebars         = global.Handlebars;
     }
 
     //==============================================================
@@ -242,8 +234,9 @@ var exp = {};
     // 5. 모듈 내보내기 (node | web)
     // if (typeof module.exports === 'object') {     
     
-    if (typeof module === 'object' && typeof module.exports === 'object') {     
+    if (typeof module !== 'undefined' && module.exports) {     
         module.exports.BoardNoticeService = BoardNoticeService;
+        module.exports.page = page;
     } else {
         global.BoardNoticeService = BoardNoticeService;
         global.page = page;
@@ -257,10 +250,11 @@ var exp = {};
     // module.exports = {};    // 읽기 전용 속성
     // Object.defineProperty(module.exports, '__esModule', true);
     // module.exports.BoardNoticeService = BoardNoticeService;
-    module.exports = BoardNoticeService;
+    // module.exports = BoardNoticeService;
 
 // }(typeof module === 'object' && typeof module.exports === 'object' ? global : window));
 }(typeof module !== 'undefined' && module.exports ? global : window));
 
 // 기본 내보내기 
 // export default  exp.BoardNoticeService;
+console.log(1111)

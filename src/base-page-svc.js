@@ -352,7 +352,7 @@ var local = {};
         // }
 
     }
-    local = {BaseService: BaseService, PageView: PageView};
+    // local = {BaseService: BaseService, PageView: PageView};
 
     // export {BaseService}
 
@@ -362,7 +362,8 @@ var local = {};
     // };
 
 
-}(typeof module === "object" && typeof module.exports === "object" ? global : window));
+// }(typeof module === "object" && typeof module.exports === "object" ? global : window));
+}(typeof module !== 'undefined' && module.exports ? global : window));
 
 console.log(11);
 // export {
@@ -396,14 +397,14 @@ console.log(module);
 //     BaseService: exp.BaseService,
 //     PageView: exp.PageView,
 // }
-const BaseService = local.BaseService;
-const PageView = local.PageView;
+// const BaseService = local.BaseService;
+// const PageView = local.PageView;
 
 
 // export * from local
-export {
-    BaseService, PageView
-}
+// export {
+//     BaseService, PageView
+// }
 
 
 // const BaseService = local.BaseService;
