@@ -1,0 +1,19 @@
+
+<div id="output"></div>
+<div id="output2"></div>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const element = (
+        <div>
+            <h1>Hello!</h1>
+            <h2>Good to see you here.</h2>
+        </div>
+    );
+    const getMessage = () => "Hello World";
+    
+    document.getElementById('output').innerHTML = getMessage();
+    document.getElementById('output2').innerHTML = React.createElemet(element);
+
+    </script>
