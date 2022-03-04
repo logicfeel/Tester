@@ -1,0 +1,25 @@
+{
+  "name": "jison-test",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000t\u0000e\u0000s\u0000t\u0000e\u0000r\u0000\r\u0000 \u0000.\u0000\r\u0000 \u0000#\u0000#\u0000 \u0000J\u0000I\u0000S\u0000O\u0000N\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logicfeel/Tester.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/logicfeel/Tester/issues"
+  },
+  "homepage": "https://github.com/logicfeel/Tester#readme",
+  "dependencies": {
+    "jison": "^0.4.18"
+  },
+  "devDependencies": {
+    "staruml.java": "git+https://github.com/staruml/staruml-java.git"
+  }
+}
