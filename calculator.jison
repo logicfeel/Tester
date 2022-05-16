@@ -3,6 +3,9 @@
 /* lexical grammar */
 %lex
 
+// Sign                  [+-]
+LL                  [2-8]
+Llogic              'logic2' | 'logic'{LL}? 
 %%
 \s+                   /* skip whitespace */
 [0-9]+("."[0-9]+)?\b  return 'NUMBER';
@@ -15,6 +18,11 @@
 ")"                   return ')';
 "PI"                  return 'PI';
 "E"                   return 'E';
+{Llogic}               return 'logic2';
+// "LO"                  return 'logic2';
+
+// {Sign}               return 'Sign';
+
 <<EOF>>               return 'EOF';
 
 /lex
@@ -32,7 +40,11 @@
 
 expressions
     : e EOF
-        {console.log($1); return $1;}
+        {
+            var a = yy.lexer;
+            console.log($1); 
+            return $1;
+        }
     ;
 
 e
@@ -41,7 +53,10 @@ e
     | e '-' e
         {$$ = $1-$3;}
     | e '*' e
-        {$$ = $1*$3;}
+        {
+            console.log($1); 
+            $$ = $1*$3;
+        }
     | e '/' e
         {$$ = $1/$3;}
     | e '^' e
@@ -56,4 +71,5 @@ e
         {$$ = Math.E;}
     | PI
         {$$ = Math.PI;}
+    | logic2
     ;
