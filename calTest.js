@@ -26,6 +26,7 @@ context = `logic3`;
 context = `logic4`;
 context = `logic`;
 context = `logic11`;
+context = `logic9`;
 // context = `logic3 logic3`;
 
 // context = `LO`;

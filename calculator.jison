@@ -1,4 +1,9 @@
 /* description: Parses end executes mathematical expressions. */
+%{ 
+    function AAA(){
+        console.log(1);
+    }
+%}
 
 /* lexical grammar */
 %lex
@@ -18,7 +23,13 @@ Llogic              'logic2' | 'logic'{LL}?
 ")"                   return ')';
 "PI"                  return 'PI';
 "E"                   return 'E';
-{Llogic}               return 'logic2';
+{Llogic}            %{ 
+                        console.log(yytext);
+                        console.log(this);
+                        console.log(yylineno);
+                        console.log(yylloc);
+                        return 'logic2';
+                    %}
 // "LO"                  return 'logic2';
 
 // {Sign}               return 'Sign';

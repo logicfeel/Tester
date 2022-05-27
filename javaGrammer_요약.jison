@@ -599,6 +599,7 @@ defaultValueOpt
     :   %empty /* empty */
     |   defaultValue
     ;
+
 annotationConstantRest
     :   variableDeclarators
     ;
@@ -611,7 +612,6 @@ defaultValue
 
 block
     :   LBRACE RBRACE
-
     |   LBRACE blockStatementList RBRACE
 
     ;
