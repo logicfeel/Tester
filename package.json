@@ -1,0 +1,23 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000t\u0000e\u0000s\u0000t\u0000e\u0000r\u0000.\u0000 \u0000T\u0000e\u0000m\u0000p\u0000l\u0000a\u0000t\u0000e\u0000\r\u0000 \u0000.\u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logicfeel/Tester.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/logicfeel/Tester/issues"
+  },
+  "homepage": "https://github.com/logicfeel/Tester#readme",
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "handlebars-wax": "^6.1.0"
+  }
+}
