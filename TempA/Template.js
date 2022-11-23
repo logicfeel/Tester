@@ -3,7 +3,7 @@ var handlebarsWax = require('handlebars-wax');
 
 class TemplateA {
     wax;
-    src = '{{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. {{kkk}} key:'
+    src = '{{#*inline "page"}} 오버 page {{/inline}} {{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} {{>page}}.. {{kkk}} key:'
     constructor() {
         this.build();
     }
@@ -15,6 +15,7 @@ class TemplateA {
             .partials({
                 boo: '{{#each boo}}{{greet}}{{/each}}',
                 far: '{{#each far}}{{length}}{{/each}}',
+                page: ' page 입니다 ',
             })
             // Helpers
             .helpers('./helpers/**/*.js')
@@ -52,7 +53,7 @@ var ta = new TemplateA()
 
 class TemplateB {
     wax;
-    src = '{{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. <{{>super kkk="KKK" vvv=ipsum}}>  key:'
+    src = '  {{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. < {{#>super kkk="KKK" vvv=ipsum}} 냉무 {{/super}} >  key:'
     constructor() {
         this.build();
 
