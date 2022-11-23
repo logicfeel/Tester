@@ -3,7 +3,7 @@ var handlebarsWax = require('handlebars-wax');
 
 class TemplateA {
     wax;
-    src = '{{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. key:'
+    src = '{{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. {{kkk}} key:'
     constructor() {
         this.build();
     }
@@ -31,9 +31,14 @@ class TemplateA {
     }
     export(key) {
         var _this = this;
-        return function() {
+        return function(data, hb) {
+            // TODO:: data _parent 와 같은건 제거후 리턴한다.
+            let subData = {};
+            for (let prop in data) {
+                if (!data._parent[prop]) subData[prop] = data[prop];
+            }
             var template = _this.wax.compile(_this.src+ key);
-            return template();
+            return template(subData);
         }
     }
     run() {
@@ -47,7 +52,7 @@ var ta = new TemplateA()
 
 class TemplateB {
     wax;
-    src = '{{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. <{{>super}}>  key:'
+    src = '{{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. <{{>super kkk="KKK" vvv=ipsum}}>  key:'
     constructor() {
         this.build();
 
