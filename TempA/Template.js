@@ -3,7 +3,9 @@ var handlebarsWax = require('handlebars-wax');
 
 class TemplateA {
     wax;
-    src = '{{#*inline "page"}} 오버 page {{/inline}} {{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} {{>page}}.. {{kkk}} key:'
+    src = '{{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} {{#>pageQQ}}pageQQ없음{{/pageQQ}}.. {{kkk}} key:'
+    // src = '{{#*inline "pageQQ"}} 오버 page {{/inline}} {{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} {{#>pageQQ}}pageQQ없음{{/pageQQ}}.. {{kkk}} key:'
+
     constructor() {
         this.build();
     }
@@ -32,7 +34,7 @@ class TemplateA {
     }
     export(key) {
         var _this = this;
-        return function(data, hb) {
+        return function(data, hb, c) {
             // TODO:: data _parent 와 같은건 제거후 리턴한다.
             let subData = {};
             for (let prop in data) {
@@ -53,7 +55,7 @@ var ta = new TemplateA()
 
 class TemplateB {
     wax;
-    src = '  {{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. < {{#>super kkk="KKK" vvv=ipsum}} 냉무 {{/super}} >  key:'
+    src = ' {{obj.bbb}} {{lorem}} {{ipsum}}  {{#>far}} boo 없음 {{/far}} .. < {{#>super kkk="KKK" vvv=ipsum}} {{#*inline "pageQQ"}} 오버 page {{/inline}} {{/super}} >  key:'
     constructor() {
         this.build();
 
@@ -67,7 +69,7 @@ class TemplateB {
             .partials({
                 boo: '{{#each boo}}{{greet}}{{/each}}',
                 far: '{{#each far}}{{length}}{{/each}}',
-                super: ta.export('SUPER')
+                super: ta.export('SUPER')   // 외부 모듈추가
             })
             // Helpers
             .helpers('./helpers/**/*.js')
@@ -79,7 +81,8 @@ class TemplateB {
             .data('./data/**/*.{js,json}')
             .data({
                 lorem: '___dolor',
-                ipsum: '___sit amet'
+                ipsum: '___sit amet',
+                obj: {bbb: 'BBB'}
         });
     }
     import(obj) {
